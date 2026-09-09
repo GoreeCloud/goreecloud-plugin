@@ -1,17 +1,17 @@
 # GoreeCloud ChatGPT Plugin — Features
 
-## Implemented in the Phase 1 foundation candidate
+## Implemented in the accepted Phase 1 Development foundation
 
 - Native GoreeCloud TypeScript MCP server foundation.
 - Stateless MCP Streamable HTTP endpoint at `/mcp`.
 - Loopback-only default and enforced Phase 1 bind boundary.
 - Local `/healthz` and `/readyz` endpoints.
 - Read-only `goreecloud.get_service_health` MCP tool limited to plugin self-state.
-- Repository validation, formatting/static lint checks, TypeScript validation, tests, build, and dependency audit workflow.
+- Repository validation, text lint, TypeScript typecheck, tests, build, and dependency audit workflow.
 - Machine-readable GoreeCloud Platform Contract 0.2 manifest.
 - AGPL-3.0-only licensing declaration.
 
-These are candidate branch capabilities until PR integration and post-merge verification are complete.
+Phase 1 was accepted through PR #1 and squash-merged to `main` as `9ebe86169ae57a310ee745a88aef6826c4890b8a`. Exact-head PR CI run `34313749897` and post-merge `main` CI run `34313814872` passed all required gates. The accepted dependency graph reported zero vulnerabilities. The product remains **Development** and is not approved for remote publication or production use.
 
 ## Explicitly not implemented
 
@@ -33,9 +33,8 @@ These are candidate branch capabilities until PR integration and post-merge veri
 
 ## Planned progression
 
-1. Complete and verify the Phase 1 repository/MCP foundation.
-2. Design and approve authentication plus remote publication boundaries.
-3. Add narrowly scoped read-only GoreeCloud knowledge integrations through approved backend interfaces.
-4. Implement and prove applicable platform-system integrations, including current Stable Glaze UI where a GoreeCloud-controlled UI surface exists.
-5. Add controlled writes only after separate authorization, audit, recovery, privacy, and security acceptance.
-6. Add operational actions only after underlying services expose stable, authenticated, auditable, recoverable APIs.
+1. Design and approve authentication and remote-publication trust boundaries.
+2. Add narrowly scoped read-only GoreeCloud knowledge integrations through approved backend interfaces.
+3. Implement and prove applicable platform-system integrations, including current Stable Glaze UI where a GoreeCloud-controlled UI surface exists.
+4. Add controlled writes only after separate authorization, audit, recovery, privacy, and security acceptance.
+5. Add operational actions only after underlying services expose Stable, authenticated, auditable, recoverable APIs and the Plugin passes the applicable acceptance gates.
