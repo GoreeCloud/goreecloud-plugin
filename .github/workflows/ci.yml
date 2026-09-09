@@ -35,6 +35,16 @@ jobs:
       - name: Validate repository controls
         run: npm run validate:repository
 
+      - name: Validate Platform Contract 0.2 declaration
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m pip install --disable-pip-version-check --no-cache-dir PyYAML==6.0.2
+          curl -fsSL \
+            https://raw.githubusercontent.com/GoreeCloud/GoreeCloud/235e519fe342d7e7075c8239fbf0f3a19dc4c6c8/scripts/validate_platform_manifest.py \
+            -o /tmp/validate_platform_manifest.py
+          python3 /tmp/validate_platform_manifest.py goreecloud.platform.yaml
+
       - name: Lint
         run: npm run lint
 
