@@ -25,7 +25,7 @@ export function createMcpServer(): McpServer {
       const health = getPluginHealth();
       return {
         content: [{ type: "text" as const, text: JSON.stringify(health) }],
-        structuredContent: health,
+        structuredContent: { ...health },
       };
     },
   );
