@@ -2,7 +2,9 @@
 
 ## Status
 
-Development — Phase 1 foundation. This repository specification is subordinate to the canonical GoreeCloud Drive project specification and governing GoreeCloud instructions.
+**Development — Phase 1 foundation accepted.** This repository specification is subordinate to the canonical GoreeCloud Drive project specification and governing GoreeCloud instructions.
+
+Phase 1 was accepted through PR #1 and is present on authoritative `main` at `9ebe86169ae57a310ee745a88aef6826c4890b8a`. This acceptance establishes only the bounded Development foundation described below; it does not qualify the Plugin for Release Candidate, Stable, remote publication, or production use.
 
 ## Purpose
 
@@ -27,21 +29,21 @@ Phase 1 intentionally stops at the plugin process boundary. There is no GoreeClo
 
 ## Current dependencies
 
-The Phase 1 package set follows the current OpenAI Apps SDK MCP Node example family while removing dependencies that are not needed by this bounded server.
+The accepted Phase 1 package set follows the OpenAI Apps SDK / MCP family while incorporating peer-compatibility and security corrections proven by GitHub Actions.
 
-- `@modelcontextprotocol/ext-apps` — Apps SDK / MCP Apps server helpers
-- `@modelcontextprotocol/sdk` — MCP server and Streamable HTTP transport
-- `express` — loopback HTTP server
-- `zod` — tool input schema construction
-- TypeScript / `tsx` — development and validation
+- `@modelcontextprotocol/ext-apps` `1.0.1` — Apps SDK / MCP Apps server helper foundation
+- `@modelcontextprotocol/sdk` `1.30.0` — MCP server and Streamable HTTP transport
+- `express` `5.1.0` — loopback HTTP server
+- `zod` `3.25.0` — tool schema construction and validation
+- TypeScript `5.9.2` / `tsx` `4.23.13` — development and validation
 
-Direct dependency versions are exact-pinned in `package.json`; Phase 1 CI resolves and audits the transitive dependency graph. A committed lockfile remains a follow-up reproducibility improvement until it can be generated and reviewed from a network-enabled validation environment.
+Direct dependency versions are exact-pinned in `package.json`; CI resolves and audits the transitive dependency graph. The accepted graph reports zero vulnerabilities. A reviewed committed lockfile remains a reproducibility requirement before any Release Candidate or Stable qualification.
 
 ## Implemented MCP tool
 
 ### `goreecloud.get_service_health`
 
-Purpose: report only the development state of this plugin process.
+Purpose: report only the Development state of this Plugin process.
 
 Risk class: Class 1 — Read.
 
@@ -67,17 +69,21 @@ This repository does not include a bypass flag for that restriction in Phase 1.
 
 `goreecloud.platform.yaml` uses Platform Contract schema version `0.2` and records all seven integral platform systems. Unimplemented integrations are declared `applicable-blocked`; schema validity does not imply Stable conformance.
 
-Current required Glaze UI target: V1.3 / `1.3.0`. No interactive Glaze UI surface is implemented in Phase 1.
+Current required Glaze UI target: V1.3 / `1.3.0`, as controlled by the canonical Glaze UI repository and current Platform Contract validator. No interactive Glaze UI surface is implemented in Phase 1.
 
-## Acceptance boundary
+## Phase 1 acceptance evidence
 
-Phase 1 may be considered integrated only after:
+The following evidence establishes the Phase 1 Development foundation as integrated:
 
-1. root repository controls are present and substantive;
-2. dependencies install the exact direct dependency versions declared in `package.json`;
-3. repository validation, lint, typecheck, tests, build, and dependency audit pass;
-4. the branch is reviewed through a pull request;
-5. the exact merged revision is read back and revalidated;
-6. canonical task, roadmap, specification, and change records are synchronized.
+1. mandatory repository controls are present and substantive;
+2. direct dependencies install successfully with compatible exact pins;
+3. exact-head PR CI run `34313749897` passed repository validation, Platform Contract 0.2 validation, lint, typecheck, tests, build, and dependency audit;
+4. PR #1 was squash-merged to `main` as `9ebe86169ae57a310ee745a88aef6826c4890b8a`;
+5. post-merge `main` CI run `34313814872` passed the same required gates;
+6. final dependency installation/audit reported zero vulnerabilities.
 
-This does not qualify the product for Release Candidate, Stable, remote deployment, or production use.
+Canonical task, roadmap, project specification, feature, and change records must remain synchronized with this verified repository state. Phase 1 acceptance does not qualify the product for Release Candidate, Stable, remote deployment, production use, external GoreeCloud data access, or writes.
+
+## Next phase
+
+Phase 2 is read-only GoreeCloud knowledge integration. Before any external read access is enabled, the Plugin requires an approved authentication/authorization and remote-publication trust boundary. Controlled writes remain deferred to later separately accepted phases.
