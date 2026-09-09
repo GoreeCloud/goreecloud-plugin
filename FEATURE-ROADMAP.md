@@ -1,8 +1,8 @@
 # GoreeCloud ChatGPT Plugin — Feature Roadmap
 
-**Status:** Active roadmap control  
-**As of:** 2026-09-08  
-**Authoritative project record:** Project Specification — ChatGPT Plugin  
+**Status:** Active roadmap control
+**As of:** 2026-09-08
+**Authoritative project record:** Project Specification — ChatGPT Plugin
 **Canonical repository:** GoreeCloud/goreecloud-plugin
 **Drive control:** `GoreeCloud/Feature Roadmap/GoreeCloud ChatGPT Plugin/FEATURE-ROADMAP.docx`
 
@@ -14,17 +14,14 @@ This file is the repository-side feature roadmap control for GoreeCloud ChatGPT 
 
 | ID | Feature / obligation | Priority | Current state |
 | --- | --- | --- | --- |
-| PLUGIN-001 | Establish and maintain the newly created GoreeCloud/goreecloud-plugin repository baseline, required repository controls, and source structure. | High | In progress — repository exists; implementation baseline is otherwise empty |
-| PLUGIN-002 | Implement the Apps SDK and MCP foundation. | High | Planned |
-| PLUGIN-003 | Add read-only GoreeCloud knowledge integration before any controlled write capability. | High | Planned |
-| PLUGIN-004 | Integrate Glaze UI and applicable Wardveil controls, then introduce controlled writes and operational integrations through explicit acceptance gates. | High | Future / gated |
+| PLUGIN-001 | Establish and maintain the GoreeCloud/goreecloud-plugin repository baseline, required repository controls, licensing, and source structure. | High | Phase 1 candidate implemented on `agent/plugin-phase1-foundation`; acceptance requires PR integration and post-merge verification. |
+| PLUGIN-002 | Implement the bounded Apps SDK / MCP foundation. | High | Phase 1 candidate implements a loopback-only MCP server and read-only self-health tool; remote publication/authentication remain blocked. |
+| PLUGIN-003 | Add read-only GoreeCloud knowledge integration before any controlled write capability. | High | Planned; not implemented in Phase 1. |
+| PLUGIN-004 | Integrate applicable current platform systems, including Glaze UI where a GoreeCloud-controlled UI exists, then introduce controlled writes and operational integrations through explicit acceptance gates. | High | Future / gated. |
 
 ## Maintenance and synchronization
 
-This roadmap and the corresponding Drive `FEATURE-ROADMAP.docx` must remain materially synchronized with one another and with the authoritative project or service record. Update both copies whenever feature scope, priority, dependency, implementation status, cancellation, supersession, recommendation, or verification state materially changes.
-
-No feature may be represented as complete or Stable solely because it appears in this roadmap. Completion and lifecycle claims require the applicable authoritative implementation, validation, review, release, and production evidence.
-
-## Reconciliation rule
-
-At each material feature change, reconcile this roadmap against the current authoritative project record, repository implementation state, applicable platform-system requirements, and GoreeCloud Tasks Management. Missing obligations, stale status, duplicated work, roadmap drift, or undocumented disposition changes are defects to correct.
+- Keep this repository file synchronized with the canonical Drive roadmap.
+- Do not mark planned work complete from documentation alone.
+- Record implementation and verification evidence before lifecycle promotion.
+- Reconcile this roadmap whenever authoritative project scope or platform requirements change.
