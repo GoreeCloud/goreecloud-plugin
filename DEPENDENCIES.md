@@ -14,11 +14,12 @@
 | Package | Version | Purpose |
 | --- | --- | --- |
 | `@types/express` | `5.0.3` | Express TypeScript declarations. |
+| `@types/node` | `22.20.1` | Node.js 22 TypeScript declarations used by the standalone TypeScript project and tests. |
 | `tsx` | `4.19.2` | TypeScript Development execution and tests. |
 | `typescript` | `5.9.2` | Compiler/type validation. |
 
 ## Source and review
 
-The dependency family and versions were selected from the current official OpenAI Apps SDK Node MCP example baseline available during Phase 1 implementation. The GoreeCloud server intentionally omits CORS because Phase 1 exposes no browser/widget surface and is loopback-only.
+The MCP dependency family and versions were selected from the current official OpenAI Apps SDK Node MCP example baseline available during Phase 1 implementation. `@types/node` is pinned explicitly because this repository is a standalone Node.js 22 TypeScript application rather than a workspace inheriting Node declarations from another package. The GoreeCloud server intentionally omits CORS because Phase 1 exposes no browser/widget surface and is loopback-only.
 
 Direct dependencies are exact-pinned in `package.json`. The transitive graph is resolved and audited in CI. A reviewed committed lockfile is still required before any Release Candidate or Stable qualification.
