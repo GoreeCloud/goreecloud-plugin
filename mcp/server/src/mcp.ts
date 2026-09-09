@@ -1,4 +1,3 @@
-import { registerAppTool } from "@modelcontextprotocol/ext-apps/server";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { getPluginHealth, PLUGIN_VERSION } from "./health.js";
 
@@ -8,15 +7,13 @@ export function createMcpServer(): McpServer {
     version: PLUGIN_VERSION,
   });
 
-  registerAppTool(
-    server,
+  server.registerTool(
     "goreecloud.get_service_health",
     {
       title: "Get GoreeCloud Plugin Service Health",
       description:
         "Returns only the GoreeCloud ChatGPT Plugin process Development status and capability boundaries. " +
         "It does not access other GoreeCloud services, repositories, documents, user data, infrastructure, or external networks.",
-      inputSchema: {},
       annotations: {
         readOnlyHint: true,
         destructiveHint: false,
