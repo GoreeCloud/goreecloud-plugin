@@ -1,0 +1,69 @@
+{
+  "schema_version": "0.2",
+  "component": {
+    "type": "application",
+    "id": "goreecloud-plugin",
+    "product_name": "GoreeCloud ChatGPT Plugin",
+    "repository": "GoreeCloud/goreecloud-plugin"
+  },
+  "lifecycle": "development",
+  "version": "0.1.0-dev",
+  "supported_platforms": ["Linux development host"],
+  "api": {
+    "versions": ["MCP Streamable HTTP"],
+    "endpoints": [
+      {"name": "mcp", "url": "http://127.0.0.1:8787/mcp", "purpose": "Loopback-only MCP Development endpoint."},
+      {"name": "health", "url": "http://127.0.0.1:8787/healthz", "purpose": "Loopback-only process health."},
+      {"name": "readiness", "url": "http://127.0.0.1:8787/readyz", "purpose": "Loopback-only process readiness."}
+    ]
+  },
+  "platform_systems": {
+    "manager": {"result": "applicable-blocked", "version": null, "evidence": [], "notes": "Not integrated in Phase 1."},
+    "privacy_shield": {"result": "applicable-blocked", "version": null, "evidence": [], "notes": "Not integrated in Phase 1."},
+    "wardveil_security": {"result": "applicable-blocked", "version": null, "evidence": [], "notes": "Not integrated in Phase 1."},
+    "everkeep": {"result": "applicable-blocked", "version": null, "evidence": [], "notes": "No persistent application state in Phase 1; platform integration not accepted."},
+    "glaze_ui": {"result": "applicable-blocked", "version": "1.3.0", "evidence": [], "notes": "Current Stable target is V1.3 / 1.3.0; no interactive application surface is implemented in Phase 1."},
+    "mesh": {"result": "applicable-blocked", "version": null, "evidence": [], "notes": "Not integrated in Phase 1.", "capabilities": [], "dependencies": [], "published_events": [], "consumed_events": []},
+    "identity": {"result": "applicable-blocked", "version": null, "evidence": [], "notes": "Authentication and authorization are not implemented in Phase 1."}
+  },
+  "health": {
+    "health_endpoint": "http://127.0.0.1:8787/healthz",
+    "readiness_endpoint": "http://127.0.0.1:8787/readyz"
+  },
+  "continuity": {
+    "backup": {"required": false, "requirements": ["Phase 1 stores no application-owned persistent state."]},
+    "restore": {"required": false, "requirements": ["Phase 1 recovery is clean reinstall/rebuild from authoritative source and exact-pinned package metadata."]},
+    "export": {"required": true, "requirements": ["Source, configuration templates, and documentation remain repository-portable."]},
+    "portability": {"required": true, "requirements": ["MCP service logic must remain independent of a single conversational client where practical."]}
+  },
+  "external_dependencies": [
+    {"name": "Node.js", "purpose": "Development runtime.", "required": true, "version_constraint": ">=22 <23"},
+    {"name": "@modelcontextprotocol/ext-apps", "purpose": "MCP Apps / Apps SDK server helper layer.", "required": true, "version_constraint": "1.0.1"},
+    {"name": "@modelcontextprotocol/sdk", "purpose": "MCP server and Streamable HTTP transport.", "required": true, "version_constraint": "1.12.1"},
+    {"name": "express", "purpose": "Loopback HTTP server.", "required": true, "version_constraint": "5.1.0"},
+    {"name": "zod", "purpose": "MCP tool schema validation.", "required": true, "version_constraint": "3.24.4"}
+  ],
+  "compatibility": {
+    "platform_contract": "0.2",
+    "glaze_ui_required": "1.3.0",
+    "requires": ["Node.js 22.x"],
+    "provides": ["Loopback MCP Streamable HTTP endpoint", "Local health endpoint", "Local readiness endpoint"]
+  },
+  "evidence": {"acceptance_tests": [], "release": []},
+  "conformance": {
+    "status": "nonconformant",
+    "validated_at": null,
+    "evidence": [],
+    "blockers": [
+      "Manager integration not implemented.",
+      "Privacy Shield integration not implemented.",
+      "Wardveil Security integration not implemented.",
+      "Everkeep integration not accepted.",
+      "Glaze UI V1.3 / 1.3.0 consumer integration and acceptance not implemented.",
+      "Mesh integration not implemented.",
+      "Identity authentication and authorization not implemented.",
+      "Remote publication is not approved.",
+      "Release Candidate, Stable, and production acceptance evidence do not exist."
+    ]
+  }
+}

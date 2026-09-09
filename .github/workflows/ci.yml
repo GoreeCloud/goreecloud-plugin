@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - 'agent/**'
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  node:
+    name: Node validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+
+      - name: Install exact-pinned dependencies
+        run: npm install --ignore-scripts --no-fund
+
+      - name: Validate repository controls
+        run: npm run validate:repository
+
+      - name: Validate Platform Contract 0.2 declaration
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m pip install --disable-pip-version-check --no-cache-dir PyYAML==6.0.2
+          curl -fsSL \
+            https://raw.githubusercontent.com/GoreeCloud/GoreeCloud/235e519fe342d7e7075c8239fbf0f3a19dc4c6c8/scripts/validate_platform_manifest.py \
+            -o /tmp/validate_platform_manifest.py
+          python3 /tmp/validate_platform_manifest.py goreecloud.platform.yaml
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Test
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      - name: Audit dependencies
+        run: npm audit --audit-level=high
